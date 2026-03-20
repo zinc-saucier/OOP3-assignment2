@@ -155,15 +155,14 @@ public interface MyStackADT<E> extends Iterator<E> {
 	public Arrays toArray();
 	
 	/**
-	 * ??
+	  * tests if the stack is of fixed size and at capacity.
 	 * 
-	 * precondition: an existing Stack object
+	 * precondition: a valid Stack object exists.
 	 * 
-	 * postCondition: 
+	 * postCondition: a boolean value representing the stack's capacity compared to its size().
 	 * 
-	 * @return 
-	 * @throws
+	 * @return True if the stack cannot accept additional elements, otherwise False.
 	 * */
-	public void stackOverflow();
+	public boolean stackOverflow();
 
 }
