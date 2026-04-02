@@ -85,7 +85,7 @@ public class ArrayListTest
 		boolean expectedBoolean = true;
 		boolean actualBoolean = myList.add( 0, one );
 
-		assertEquals( " ailed to return true.", expectedBoolean, actualBoolean );
+		assertEquals( "Failed to return true.", expectedBoolean, actualBoolean );
 	}
 
 	/**
