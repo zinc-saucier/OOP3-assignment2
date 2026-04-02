@@ -6,6 +6,13 @@ import java.util.NoSuchElementException;
 import utilities.Iterator;
 import utilities.ListADT;
 
+/**
+ * @author Tessa Unrau
+ * @version 1.0
+ * 
+ * Class description: Implementation of ListADT interface as an ArrayList.
+ * */
+
 public class MyArrayList<E> implements ListADT<E>{
 	
 	private E[] list;
