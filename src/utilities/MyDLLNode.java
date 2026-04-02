@@ -1,6 +1,16 @@
 
 package utilities;
 
+/**
+ * Node class for Doubly Linked List.
+ *
+ * Each node contains:
+ * - the element
+ * - reference to next node
+ * - reference to previous node
+ *
+ * @param <T> the type of element stored
+ */
 public class MyDLLNode<T> {
 
       private T element;

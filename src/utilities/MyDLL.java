@@ -6,6 +6,15 @@ import java.util.NoSuchElementException;
 
 import java.util.Iterator;
 
+/**
+ * Doubly Linked List implementation of the ListADT interface.
+ *
+ * This class supports insertion, removal, and traversal of elements
+ * using a doubly linked structure with head and tail references.
+ *
+ * @param <T> the type of elements stored in the list
+ */
+
 public class MyDLL<T> implements ListADT<T> {
 
       private MyDLLNode<T> head;
@@ -23,6 +32,13 @@ public class MyDLL<T> implements ListADT<T> {
             size = 0;
 
       }
+
+      /**
+       * Adds an element to the end of the list.
+       *
+       * @param element the element to be added
+       * @throws NullPointerException if the element is null
+       */
 
       @Override
 
@@ -50,6 +66,15 @@ public class MyDLL<T> implements ListADT<T> {
             size++;
 
       }
+
+      /**
+       * Inserts an element at a specified position in the list.
+       *
+       * @param index   the position to insert the element
+       * @param element the element to be added
+       * @throws NullPointerException      if the element is null
+       * @throws IndexOutOfBoundsException if index is invalid
+       */
 
       @Override
 
@@ -103,6 +128,15 @@ public class MyDLL<T> implements ListADT<T> {
 
       }
 
+      /**
+       * Removes and returns the element at the specified position.
+       *
+       * @param index the position of the element to remove
+       * @return the removed element
+       * @throws NoSuchElementException    if the list is empty
+       * @throws IndexOutOfBoundsException if index is invalid
+       */
+
       @Override
 
       public T remove(int index) {
@@ -150,6 +184,13 @@ public class MyDLL<T> implements ListADT<T> {
             return removed;
 
       }
+
+      /**
+       * Removes the first occurrence of the specified element.
+       *
+       * @param element the element to remove
+       * @return true if the element was found and removed, false otherwise
+       */
 
       @Override
 
@@ -201,6 +242,14 @@ public class MyDLL<T> implements ListADT<T> {
 
       }
 
+      /**
+       * Returns the element at the specified position.
+       *
+       * @param index the position of the element
+       * @return the element at the given index
+       * @throws IndexOutOfBoundsException if index is invalid
+       */
+
       @Override
 
       public T get(int index) {
@@ -236,6 +285,12 @@ public class MyDLL<T> implements ListADT<T> {
 
       }
 
+      /**
+       * Checks if the list is empty.
+       *
+       * @return true if the list contains no elements
+       */
+
       @Override
 
       public boolean isEmpty() {
@@ -244,6 +299,12 @@ public class MyDLL<T> implements ListADT<T> {
 
       }
 
+      /**
+       * Returns the number of elements in the list.
+       *
+       * @return the size of the list
+       */
+
       @Override
 
       public int size() {
@@ -251,6 +312,10 @@ public class MyDLL<T> implements ListADT<T> {
             return size;
 
       }
+
+      /**
+       * Removes all elements from the list.
+       */
 
       @Override
 
@@ -287,6 +352,11 @@ public class MyDLL<T> implements ListADT<T> {
 
       }
 
+      /**
+       * Returns an iterator over the elements in the list.
+       *
+       * @return an iterator for the list
+       */
       @Override
 
       public Iterator<T> iterator() {
