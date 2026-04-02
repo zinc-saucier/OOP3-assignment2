@@ -8,17 +8,9 @@ import utilities.Iterator;
 import utilities.StackADT;
 
 /**
- * MyStack is an implementation of StackADT using MyArrayList as the
- * underlying data structure. The top of the stack is the last element
- * in the list (highest index), giving O(1) push and pop.
- *
- * Pre-conditions:  Elements pushed onto the stack must not be null.
- * Post-conditions: Elements are returned in LIFO order. The stack grows
- *                  dynamically with no fixed capacity.
- *
  * @author Seksan Wangkhiree
  * @version 1.0
- * 
+ *
  * MyStack is an implementation of the StackADT interface using MyArrayList
  * as the underlying data structure. It follows LIFO (Last-In, First-Out)
  * ordering, where the last element pushed is the first element popped.
@@ -26,7 +18,6 @@ import utilities.StackADT;
  * In the XML parser, MyStack tracks opening tags as the document is read.
  * Opening tags are pushed onto the stack and compared against closing tags
  * by popping from the top, verifying the XML is properly nested.
- * 
  */
 public class MyStack<E> implements StackADT<E>
 {

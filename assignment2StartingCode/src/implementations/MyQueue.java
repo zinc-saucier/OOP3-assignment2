@@ -8,17 +8,17 @@ import utilities.Iterator;
 import utilities.QueueADT;
 
 /**
- * MyQueue is an implementation of QueueADT using MyDLL as the
- * underlying data structure. Elements are enqueued at the tail
- * and dequeued from the head, giving FIFO ordering.
- *
- * Pre-conditions:  Elements enqueued must not be null.
- * Post-conditions: Follows FIFO order. iterator() and toArray()
- *                  return elements from front (head) to back (tail).
- *
- * @param <E> the type of elements stored in this queue
- * @author Assignment 2 Group - Person 3
+ * @author Seksan Wangkhiree
  * @version 1.0
+ * 
+ * MyQueue is an implementation of the QueueADT interface using MyDLL
+ * as the underlying data structure. It follows FIFO (First-In, First-Out)
+ * ordering, where the first element enqueued is the first element dequeued.
+ *
+ * In the XML parser, MyQueue collects error tags as the document is read.
+ * Tags that do not match correctly are enqueued and reported in the order
+ * they were encountered once parsing is complete.
+ *
  */
 public class MyQueue<E> implements QueueADT<E>
 {
