@@ -46,12 +46,24 @@ public class MyStack<E> implements StackADT<E> {
 
       @Override
       public Object[] toArray() {
-            return list.toArray();
+          int n = list.size();
+          Object[] result = new Object[n];
+          for (int i = 0; i < n; i++)
+              result[i] = list.get(n - 1 - i);
+          return result;
       }
-
+      
+      @SuppressWarnings("unchecked")
       @Override
       public E[] toArray(E[] holder) throws NullPointerException {
-            return list.toArray(holder);
+          if (holder == null) throw new NullPointerException();
+          int n = list.size();
+          if (holder.length < n)
+              holder = (E[]) java.util.Arrays.copyOf(holder, n, holder.getClass());
+          for (int i = 0; i < n; i++)
+              holder[i] = list.get(n - 1 - i);
+          if (holder.length > n) holder[n] = null;
+          return holder;
       }
 
       @Override
@@ -61,7 +73,6 @@ public class MyStack<E> implements StackADT<E> {
             return list.contains(toFind);
       }
 
-      // ✅ FIXED SEARCH METHOD (ONLY ONE)
       @Override
       public int search(E toFind) {
             if (toFind == null)
@@ -81,7 +92,20 @@ public class MyStack<E> implements StackADT<E> {
 
       @Override
       public Iterator<E> iterator() {
-            return list.iterator();
+          return new MyStackIterator();
+      }
+
+      private class MyStackIterator implements Iterator<E> {
+          private int cursor = list.size() - 1;
+
+          @Override
+          public boolean hasNext() { return cursor >= 0; }
+
+          @Override
+          public E next() {
+              if (!hasNext()) throw new java.util.NoSuchElementException();
+              return list.get(cursor--);
+          }
       }
 
       @Override
