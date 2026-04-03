@@ -52,20 +52,38 @@ public class MyArrayList<E> implements ListADT<E>{
 	 * @throws NullPointerException if the element to be added is null
 	 */
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException {
 		boolean status = false;
 		if( toAdd == null )
 		{
-			throw new NullPointerException( "Cannot store an null" );
+			throw new NullPointerException( "Cannot store a null value" );
 		}
-		if( index < 0 || index > size() )
+		if( index < 0 || index > size())
 		{
 			throw new IndexOutOfBoundsException( "Index is outside current list boundary '" + index + "'" );
 		}
-
+		if(index == 0 && !isEmpty()) {
+			E[] temp = (E[]) new Object[size()+1];
+			temp[0] = toAdd;
+			for (int i = 0 ; i < size() ; i++) {
+				temp[i+1] = list[i];
+			}
+			this.list = temp;
+			status = true;
+		}
+		if(size() == 0) {
+			add(toAdd);
+			status = true;
+		} 
+		else
+		{
 			list[index] = toAdd;
-			status=true;
+			status = true;
+		}
+		
+		
 		return status;
 	}
 
@@ -84,13 +102,23 @@ public class MyArrayList<E> implements ListADT<E>{
 		{
 			throw new NullPointerException( "Cannot store an null" );
 		}
-		//increase size of array by 1, add new element to final index position
-		E[] temp = (E[]) new Object[size()+1];
-		for (int i = 0 ; i < size() ; i++) {
-			temp[i] = list[i];
+		//increase size of array by 1, add new element to zero index position
+		if (size() == 0) {
+			E[] temp = (E[]) new Object[1];
+			temp[0] = toAdd;
+			this.list = temp;
+			return list[0] == toAdd;
 		}
-		this.list = temp;
-		return add( size()-1, toAdd);
+		else {
+			//increase size of array by 1, add new element to final index position
+			E[] temp = (E[]) new Object[size()+1];
+			for (int i = 0 ; i < size() ; i++) {
+				temp[i] = list[i];
+			}
+			this.list = temp;
+			return add( size()-1, toAdd);
+		}
+		
 		
 	}
 
