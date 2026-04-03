@@ -58,42 +58,24 @@ public class MyArrayList<E> implements ListADT<E>{
 	 *                                   <code>(index < 0 || index > size)</code>
 	 * @throws NullPointerException if the element to be added is null
 	 */
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException {
-		boolean status = false;
-		if( toAdd == null )
-		{
-			throw new NullPointerException( "Cannot store a null value" );
-		}
-		if( index < 0 || index > size())
-		{
-			throw new IndexOutOfBoundsException( "Index is outside current list boundary '" + index + "'" );
-		}
-		if(index == 0 && !isEmpty()) {
-			E[] temp = (E[]) new Object[size()+1];
-			temp[0] = toAdd;
-			for (int i = 0 ; i < size() ; i++) {
-				temp[i+1] = list[i];
-			}
-			this.list = temp;
-			status = true;
-		}
-		if(size() == 0) {
-			add(toAdd);
-			status = true;
-		} 
-		else
-		{
-			list[index] = toAdd;
-			status = true;
-		}
-		
-		
-		return status;
+	    if (toAdd == null)
+	        throw new NullPointerException("Cannot store a null value");
+	    if (index < 0 || index > size())
+	        throw new IndexOutOfBoundsException("Index is outside current list boundary '" + index + "'");
+	 
+	    E[] temp = (E[]) new Object[size() + 1];
+	    for (int i = 0; i < index; i++)
+	        temp[i] = list[i];
+	    temp[index] = toAdd;
+	    for (int i = index; i < size(); i++)
+	        temp[i + 1] = list[i];
+	    this.list = temp;
+	    return true;
 	}
-
+	 
 	/**
 	 * Method to add an element to the end of a List. If the list is empty the
 	 * element will be added to the first position.
@@ -104,31 +86,17 @@ public class MyArrayList<E> implements ListADT<E>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(E toAdd) throws NullPointerException {
-		
-		if( toAdd == null )
-		{
-			throw new NullPointerException( "Cannot store an null" );
-		}
-		//increase size of array by 1, add new element to zero index position
-		if (size() == 0) {
-			E[] temp = (E[]) new Object[1];
-			temp[0] = toAdd;
-			this.list = temp;
-			return list[0] == toAdd;
-		}
-		else {
-			//increase size of array by 1, add new element to final index position
-			E[] temp = (E[]) new Object[size()+1];
-			for (int i = 0 ; i < size() ; i++) {
-				temp[i] = list[i];
-			}
-			this.list = temp;
-			return add( size()-1, toAdd);
-		}
-		
-		
+	    if (toAdd == null)
+	        throw new NullPointerException("Cannot store a null value");
+	 
+	    E[] temp = (E[]) new Object[size() + 1];
+	    for (int i = 0; i < size(); i++)
+	        temp[i] = list[i];
+	    temp[size()] = toAdd;
+	    this.list = temp;
+	    return true;
 	}
-
+	
 	/**
 	 * Appends all of the elements in the specified <code>java.utilCollection</code>
 	 * to the end of this list, in the order that they are returned by the specified
